@@ -1,3 +1,6 @@
+# Custom folders to skip from the repository
+tests
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
