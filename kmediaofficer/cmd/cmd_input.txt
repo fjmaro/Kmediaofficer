@@ -1,0 +1,13 @@
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃        MEDIA OFFICER        ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ Select one of the following ┃
+┃    options from the list    ┃
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
+┃ (0) Run options 1 and 2     ┃
+┃ (1) Run Raw Arranger        ┃
+┃ (2) Run Files Maintainer    ┃
+┃                             ┃
+┃ (8) Help and info           ┃
+┃ (9) Exit                    ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛

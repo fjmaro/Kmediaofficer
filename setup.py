@@ -1,48 +1,43 @@
 """
 ------------------------------------------------------------------------------
-KmediaOfficer <https://github.com/fjmaro/KmediaOfficer>
-Copyright 2022 Francisco José Mata Aroco
-
-This file is part of KmediaOfficer (hereinafter called "Library").
-
-This "Library" is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the licence, or
-(at your option) any later version.
-
-This "Library" is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-
-See LICENSE.md for more details.
+Setup file for autoloading '_about.py' information in standard distributions.
+Looks for the '_about.py' file under the second level of the project folder.
+------------------------------------------------------------------------------
+Copyright - Francisco José Mata Aroco (https://github.com/fjmaro)
+See LICENSE.md file in this project for further details (setup.py v1.0.0)
 ------------------------------------------------------------------------------
 """
+# pylint: disable=exec-used, line-too-long
+import glob
+import pathlib
+from setuptools import setup, find_packages
 
-# pylint: disable=line-too-long
-from distutils.core import setup
-import kmediaofficer
+here = pathlib.Path(__file__).parent.resolve()
+aboutpath = [x for x in glob.glob(str(here) + "/*/*") if "_about.py" in x]
 
+if len(aboutpath) == 0:
+    FileNotFoundError(
+        "SetupError: File '_about.py' not found in package level './*/*'")
+elif len(aboutpath) > 1:
+    FileExistsError(
+        "SetupError: Only one '_about.py' file is allowed in the package")
 
-with open("README.md", "r", encoding='utf-8') as fhd:
-    long_description = fhd.read()
+readmefound = pathlib.Path(here / "README.md").is_file()
+assert readmefound, "SetupError: 'README.md' file not found"
 
-setup(name="KmediaOfficer",
-      version=kmediaofficer.__version__,
-      license="GPLv3+",
-      author=kmediaofficer.__author__,
-      url="https://github.com/fjmaro/KmediaOfficer",
-      description="Photography, video and multimedia program for the management and control of large amount of files",
-      long_description=long_description,
-      classifiers=[
-          "Development Status :: 3 - Alpha",
-          "Intended Audience :: Developers",
-          "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
-          "Programming Language :: Python :: 3",
-          "Topic :: Multimedia"],
-      packages=["kmediaofficer", ],
-      python_requires='>=3.9',
-      install_requires=['kjmarotools @ git+https://github.com/fjmaro/KjmaroTools@main',
-                        'kanalyxer @ git+https://github.com/fjmaro/Kanalyxer@main',
-                        'kmaintainer @ git+https://github.com/fjmaro/Kmaintainer@main',
-                        'krawarranger @ git+https://github.com/fjmaro/KrawArranger@main']
-      )
+about: dict = {}
+with open(aboutpath[0], "r", encoding='utf-8') as fhd:
+    exec(fhd.read(), about)
+
+setup(name=about['__title__'],
+      version=about['__version__'],
+      description=about['__summary__'],
+      long_description=(here / "README.md").read_text(encoding="utf-8"),
+      url=about['__uri__'],
+      author=about['__author__'],
+      author_email=about['__email__'],
+      license=about['__license__'],
+      packages=find_packages(),
+      classifiers=about['CLASSIFIERS'],
+      python_requires=about['PYTHON_REQUIRES'],
+      install_requires=about['INSTALL_REQUIRES'])
