@@ -32,7 +32,7 @@ class MediaOfficer:
         inf_msg2 = "[MDO] <HELP> All the modules contain their own %s"
         self.log.info(inf_msg0, "phase of the program")
         self.log.info(inf_msg1, " results for a block")
-        self.log.info(inf_msg2, " tags: [RWA], [MNT], etc.")
+        self.log.info(inf_msg2, "tags: [RWA], [MNT], etc.")
 
         # Configuration parameters
         self.pos_path = pos_base_path

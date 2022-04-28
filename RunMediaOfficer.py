@@ -19,14 +19,14 @@ _POSITIVE_FOLDER = _NEGATIVE_FOLDER.parent
 _RESULTS_PATH = _NEGATIVE_FOLDER.joinpath("MediaOfficer")
 if not _RESULTS_PATH.exists():
     os.mkdir(_RESULTS_PATH)
-_MDO = MediaOfficer(_POSITIVE_FOLDER, _NEGATIVE_FOLDER, _RESULTS_PATH,
-                    _FOLDER_PATTERNS, _RAW_EXTENSIONS)
+_PARAMS = (_POSITIVE_FOLDER, _NEGATIVE_FOLDER, _RESULTS_PATH,
+           _FOLDER_PATTERNS, _RAW_EXTENSIONS)
 
 # =============================== DO NOT EDIT ================================
 _OPTION_SELECTED = -1
 _ALLOWED_OPTIONS = (0, 1, 2, 8, 9)
-_CMD_HELP = _MDO.load_cmd_file("cmd_help.txt")
-_CMD_INPUT = _MDO.load_cmd_file("cmd_input.txt")
+_CMD_HELP = MediaOfficer.load_cmd_file("cmd_help.txt")
+_CMD_INPUT = MediaOfficer.load_cmd_file("cmd_input.txt")
 while _OPTION_SELECTED != 9:
     print(_CMD_INPUT)
     _OPTION_STR = input(" > Select Option: ")
@@ -34,15 +34,18 @@ while _OPTION_SELECTED != 9:
         _OPTION_SELECTED = int(_OPTION_STR)
 
         if _OPTION_SELECTED == 0:
+            _MDO = MediaOfficer(*_PARAMS)
             _MDO.init_raw_arranger()
             _MDO.init_file_maintainer()
             _MDO.run()
 
         elif _OPTION_SELECTED == 1:
+            _MDO = MediaOfficer(*_PARAMS)
             _MDO.init_raw_arranger()
             _MDO.run()
 
         elif _OPTION_SELECTED == 2:
+            _MDO = MediaOfficer(*_PARAMS)
             _MDO.init_file_maintainer()
             _MDO.run()
 

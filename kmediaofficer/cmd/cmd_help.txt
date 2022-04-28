@@ -8,7 +8,9 @@
 ┃ - Files Maintainer: Rename the files with proprietary conventions and update the files modification-date according ┃
 ┃                     to the KDIN and TRKDIN given in the file.                                                      ┃
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
-┃ - Raw Arranger:     [FolderCreated] New folder created in Negatives.                                               ┃
+┃ - Raw Arranger:     [TreeError] Discrepance found in the negatives folder-tree.                                    ┃
+┃                     [FileExist] File to move from positives already exists in negatives folder.                    ┃
+┃                     [FolderCreated] New folder created in Negatives.                                               ┃
 ┃                     [FileMoved] File moved from positives to negatives.                                            ┃
 ┃                     [Integrity] Return MD5 Integrity checks-failed after each file move.                           ┃
 ┃                                                                                                                    ┃
