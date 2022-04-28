@@ -4,7 +4,6 @@ Executable file for running MediaOfficer. This is Designed for being allocated
 inside the negatives folder (which is inside the positives folder)
 ------------------------------------------------------------------------------
 """
-# pylint: disable=invalid-name
 import os
 import time
 from pathlib import Path
