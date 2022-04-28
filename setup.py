@@ -40,4 +40,5 @@ setup(name=about['__title__'],
       packages=find_packages(),
       classifiers=about['CLASSIFIERS'],
       python_requires=about['PYTHON_REQUIRES'],
-      install_requires=about['INSTALL_REQUIRES'])
+      install_requires=about['INSTALL_REQUIRES'],
+      package_data=about['PACKAGE_DATA'])

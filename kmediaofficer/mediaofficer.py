@@ -80,7 +80,7 @@ class MediaOfficer:
             print("" + f" ┃{'PROCESS SUCCESSFULLY FINALIZED':^76s}┃")
             print(" ┗" + "━" * 76 + "┛\n")
         else:
-            self.log.info("[WARNING] PROCESS FINALIZED WITH WARNINGS")
+            self.log.warning("[WARNING] PROCESS FINALIZED WITH WARNINGS")
             print("\n ┏" + "━" * 76 + "┓")
             print("" + f" ┃{'PROCESS FINALIZED WITH WARNINGS':^76s}┃")
             print(" ┗" + "━" * 76 + "┛\n")

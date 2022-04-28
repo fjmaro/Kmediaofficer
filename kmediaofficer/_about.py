@@ -3,7 +3,7 @@
 # pylint: disable=line-too-long
 __all__ = ["__title__", "__summary__", "__uri__", "__version__",
            "__author__", "__email__", "__license__", "__copyright__",
-           "PYTHON_REQUIRES", "INSTALL_REQUIRES", "CLASSIFIERS"]
+           "PACKAGE_DATA", "PYTHON_REQUIRES", "INSTALL_REQUIRES", "CLASSIFIERS"]
 
 
 # Package title, version, short description and repository URL
@@ -18,11 +18,15 @@ __author__ = "Francisco José Mata Aroco"
 __license__ = "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)"
 __copyright__ = f"2022 {__author__}"
 
+# Additional files to include
+PACKAGE_DATA: dict[str, list[str]] = {__title__: ["cmd/*.txt"]}
+
 # Python and package requirements
 PYTHON_REQUIRES = ">=3.9, <4"
-INSTALL_REQUIRES = ['krawarranger @ git+https://github.com/fjmaro/Krawarranger@main',
-                    'kmaintainer @ git+https://github.com/fjmaro/Kmaintainer@main',
-                    'kjmarotools @ git+https://github.com/fjmaro/Kjmarotools@main']
+INSTALL_REQUIRES: list[str] = [
+    'krawarranger @ git+https://github.com/fjmaro/Krawarranger@main',
+    'kmaintainer @ git+https://github.com/fjmaro/Kmaintainer@main',
+    'kjmarotools @ git+https://github.com/fjmaro/Kjmarotools@main']
 
 # PyPI classifiers with '__license__' included (https://pypi.org/classifiers/)
 CLASSIFIERS = [__license__,
