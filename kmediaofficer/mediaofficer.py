@@ -14,16 +14,16 @@ class MediaOfficer:
     --------------------------------------------------------------------------
     """
     # pylint: disable=too-many-instance-attributes,too-many-arguments
-    LOGGER_NAME = "MediaOfficer"
     YEAR_BOUNDS = 1800, 2300
 
     def __init__(self, pos_base_path: Path, neg_base_path: Path,
                  results_path: Path, folder_patterns: Tuple[str, ...],
-                 raw_extensions: Tuple[str, ...] = ("RAW", "NEF", "LRCAT")):
+                 raw_extensions: Tuple[str, ...] = ("RAW", "NEF", "LRCAT"),
+                 logger_name: str = "MediaOfficer"):
         self._mant: Optional[FileMaintainer] = None
         self._rawa: Optional[RawArranger] = None
 
-        self.log = logtools.get_fast_logger(self.LOGGER_NAME, results_path)
+        self.log = logtools.get_fast_logger(logger_name, results_path)
         self.log.info("Positives Path: %s", pos_base_path)
         self.log.info("Negatives Path: %s", neg_base_path)
         self.log.info("Results Path:   %s", results_path)

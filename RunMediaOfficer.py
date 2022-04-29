@@ -6,12 +6,14 @@ inside the negatives folder (which is inside the positives folder)
 """
 import os
 import time
+import datetime
 from pathlib import Path
 from kmediaofficer import MediaOfficer
 
 # ======================== TO UPDATE / EDIT IF NEEDED ========================
 _RAW_EXTENSIONS = ("RAW", "NEF", "LRCAT")
 _FOLDER_PATTERNS = ("1.*", "2.*", "3.*", "4.*", "5.*")
+_NEWLOG_PEREXECUTION = True
 
 # =============================== DO NOT EDIT ================================
 _NEGATIVE_FOLDER = Path(__file__).parent.resolve()
@@ -19,8 +21,12 @@ _POSITIVE_FOLDER = _NEGATIVE_FOLDER.parent
 _RESULTS_PATH = _NEGATIVE_FOLDER.joinpath("MediaOfficer")
 if not _RESULTS_PATH.exists():
     os.mkdir(_RESULTS_PATH)
+_LOGGER_NAME = "MediaOfficer"
+if _NEWLOG_PEREXECUTION:
+    dttme = datetime.datetime.now().strftime("%Y%m%d-%H%M%S ")
+    _LOGGER_NAME = dttme + _LOGGER_NAME
 _PARAMS = (_POSITIVE_FOLDER, _NEGATIVE_FOLDER, _RESULTS_PATH,
-           _FOLDER_PATTERNS, _RAW_EXTENSIONS)
+           _FOLDER_PATTERNS, _RAW_EXTENSIONS, _LOGGER_NAME)
 
 # =============================== DO NOT EDIT ================================
 _OPTION_SELECTED = -1
