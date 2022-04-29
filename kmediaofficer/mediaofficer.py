@@ -5,6 +5,7 @@ from pathlib import Path
 from kjmarotools.basics import logtools
 from kmaintainer import FileMaintainer
 from krawarranger import RawArranger
+from kfilecontroller import FileController
 
 
 class MediaOfficer:
@@ -22,6 +23,7 @@ class MediaOfficer:
                  logger_name: str = "MediaOfficer"):
         self._mant: Optional[FileMaintainer] = None
         self._rawa: Optional[RawArranger] = None
+        self._ctrl: Optional[FileController] = None
 
         self.log = logtools.get_fast_logger(logger_name, results_path)
         self.log.info("Positives Path: %s", pos_base_path)
@@ -51,6 +53,11 @@ class MediaOfficer:
         self._mant = FileMaintainer(self.pos_path, self.log, self.patterns,
                                     self.YEAR_BOUNDS)
 
+    def init_file_controller(self, database_file: Path) -> None:
+        """Initializing the FileMaintainer"""
+        self._ctrl = FileController(self.pos_path, database_file, self.log,
+                                    self.patterns)
+
     def run(self, embedded=False) -> bool:
         """
         ----------------------------------------------------------------------
@@ -65,6 +72,7 @@ class MediaOfficer:
         self.log.info(".....")
         rawa_err = False
         mant_err = False
+        ctrl_err = False
 
         if self._rawa is not None:
             rawa_err = self._rawa.run(embedded=True)
@@ -74,7 +82,11 @@ class MediaOfficer:
             mant_err = self._mant.run(embedded=True)
             self.log.info(".....")
 
-        if not rawa_err and not mant_err:
+        if self._ctrl is not None:
+            ctrl_err = self._ctrl.run(embedded=True)
+            self.log.info(".....")
+
+        if not rawa_err and not mant_err and not ctrl_err:
             self.log.info("[OK] PROCESS SUCCESSFULLY FINALIZED")
             print("\n ┏" + "━" * 76 + "┓")
             print("" + f" ┃{'PROCESS SUCCESSFULLY FINALIZED':^76s}┃")
@@ -87,7 +99,7 @@ class MediaOfficer:
 
         if not embedded:
             input(" > PRESS ENTER TO RESUME...")
-        return rawa_err or mant_err
+        return rawa_err or mant_err or ctrl_err
 
     @staticmethod
     def load_cmd_file(filename: str) -> str:

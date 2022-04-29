@@ -7,6 +7,9 @@
 ┃                                                                                                                    ┃
 ┃ - Files Maintainer: Rename the files with proprietary conventions and update the files modification-date according ┃
 ┃                     to the KDIN and TRKDIN given in the file.                                                      ┃
+┃                                                                                                                    ┃
+┃ - Files Controller: Create a database with the files-tree to detect all the files deleted since last execution of  ┃
+┃                     the program.                                                                                   ┃
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 ┃ - Raw Arranger:     [TreeError] Discrepance found in the negatives folder-tree.                                    ┃
 ┃                     [FileExist] File to move from positives already exists in negatives folder.                    ┃
@@ -17,6 +20,9 @@
 ┃ - Files Maintainer: [Duplicated] File with PROPDIN not renamed because a file with the same KDIN already exist.    ┃
 ┃                     [PropRenamed] File with PROPDIN renamed to KDIN.                                               ┃
 ┃                     [DateUpdated] File Modify Date updated to match its KDIN/TRKDIN.                               ┃
+┃                                                                                                                    ┃
+┃ - Files Controller: [FileDeleted] File deleted found ince last execution.                                          ┃
+┃                     [ProbablyFound] Found new files added with MD5 values matching the deleted file.               ┃
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 ┃ - KDIN: Kjmaro Date-In-Name Convention [YYYYmmdd-HHMMSS*]                                                          ┃
 ┃ - EKDIN: Kjmaro Editing-Date-In-Name Convention [*++YYYY-mm-dd+HH-MM-SS++*]                                        ┃

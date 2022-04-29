@@ -19,6 +19,7 @@ _NEWLOG_PEREXECUTION = True
 _NEGATIVE_FOLDER = Path(__file__).parent.resolve()
 _POSITIVE_FOLDER = _NEGATIVE_FOLDER.parent
 _RESULTS_PATH = _NEGATIVE_FOLDER.joinpath("MediaOfficer")
+_CONTROLLER_DTB = _RESULTS_PATH.joinpath("fcontroller.dat")
 if not _RESULTS_PATH.exists():
     os.mkdir(_RESULTS_PATH)
 _LOGGER_NAME = "MediaOfficer"
@@ -30,7 +31,7 @@ _PARAMS = (_POSITIVE_FOLDER, _NEGATIVE_FOLDER, _RESULTS_PATH,
 
 # =============================== DO NOT EDIT ================================
 _OPTION_SELECTED = -1
-_ALLOWED_OPTIONS = (0, 1, 2, 8, 9)
+_ALLOWED_OPTIONS = (0, 1, 2, 3, 8, 9)
 _CMD_HELP = MediaOfficer.load_cmd_file("cmd_help.txt")
 _CMD_INPUT = MediaOfficer.load_cmd_file("cmd_input.txt")
 while _OPTION_SELECTED != 9:
@@ -53,6 +54,11 @@ while _OPTION_SELECTED != 9:
         elif _OPTION_SELECTED == 2:
             _MDO = MediaOfficer(*_PARAMS)
             _MDO.init_file_maintainer()
+            _MDO.run()
+
+        elif _OPTION_SELECTED == 3:
+            _MDO = MediaOfficer(*_PARAMS)
+            _MDO.init_file_controller(_CONTROLLER_DTB)
             _MDO.run()
 
         elif _OPTION_SELECTED == 8:

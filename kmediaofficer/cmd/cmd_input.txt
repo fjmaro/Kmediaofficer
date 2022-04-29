@@ -7,6 +7,7 @@
 ┃ (0) Run options 1 and 2     ┃
 ┃ (1) Run Raw Arranger        ┃
 ┃ (2) Run Files Maintainer    ┃
+┃ (3) Run Files Controller    ┃
 ┃                             ┃
 ┃ (8) Help and info           ┃
 ┃ (9) Exit                    ┃
