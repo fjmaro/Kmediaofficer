@@ -14,7 +14,7 @@ from kmediaofficer import MediaOfficer
 _RAW_EXTENSIONS = ("RAW", "NEF", "LRCAT")
 _FOLDER_PATTERNS = ("1.*", "2.*", "3.*", "4.*", "5.*")
 _NEWLOG_PEREXECUTION = True
-_DEBUG_MODE = False
+_AUTOUPDATE_CONTROLLER_DTB = False
 
 # =============================== DO NOT EDIT ================================
 _NEGATIVE_FOLDER = Path(__file__).parent.resolve()
@@ -45,22 +45,22 @@ while _OPTION_SELECTED != 9:
             _MDO = MediaOfficer(*_PARAMS)
             _MDO.init_raw_arranger()
             _MDO.init_file_maintainer()
-            _MDO.run(debugmode=_DEBUG_MODE)
+            _MDO.run()
 
         elif _OPTION_SELECTED == 1:
             _MDO = MediaOfficer(*_PARAMS)
             _MDO.init_raw_arranger()
-            _MDO.run(debugmode=_DEBUG_MODE)
+            _MDO.run()
 
         elif _OPTION_SELECTED == 2:
             _MDO = MediaOfficer(*_PARAMS)
             _MDO.init_file_maintainer()
-            _MDO.run(debugmode=_DEBUG_MODE)
+            _MDO.run()
 
         elif _OPTION_SELECTED == 3:
             _MDO = MediaOfficer(*_PARAMS)
             _MDO.init_file_controller(_CONTROLLER_DTB)
-            _MDO.run(debugmode=_DEBUG_MODE)
+            _MDO.run(ctrl_autoupdate_dtb=_AUTOUPDATE_CONTROLLER_DTB)
 
         elif _OPTION_SELECTED == 8:
             print(_CMD_HELP)

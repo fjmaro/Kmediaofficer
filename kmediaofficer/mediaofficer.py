@@ -58,12 +58,12 @@ class MediaOfficer:
         self._ctrl = FileController(self.pos_path, database_file, self.log,
                                     self.patterns)
 
-    def run(self, embedded=False, debugmode=False) -> bool:
+    def run(self, embedded=False, ctrl_autoupdate_dtb=False) -> bool:
         """
         ----------------------------------------------------------------------
         Execute MediaOfficer with the defined configuration
         - embedded: It won't stop after successful execution
-        - debugmode: Enable it for debugging process.
+        - ctrl_autoupdate_dtb: Autoupdate controller database after execution
         ----------------------------------------------------------------------
         return:
             - True: An error was raised during execution
@@ -84,8 +84,8 @@ class MediaOfficer:
             self.log.info(".....")
 
         if self._ctrl is not None:
-            ctrl_err = self._ctrl.run(embedded=True,
-                                      skip_dtb_updates=debugmode)
+            ctrl_err = self._ctrl.run(
+                embedded=True, autoupdate_dtb=ctrl_autoupdate_dtb)
             self.log.info(".....")
 
         if not rawa_err and not mant_err and not ctrl_err:
