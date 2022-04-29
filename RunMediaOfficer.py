@@ -14,7 +14,7 @@ from kmediaofficer import MediaOfficer
 _RAW_EXTENSIONS = ("RAW", "NEF", "LRCAT")
 _FOLDER_PATTERNS = ("1.*", "2.*", "3.*", "4.*", "5.*")
 _NEWLOG_PEREXECUTION = True
-_DEBUG_MODE = True
+_DEBUG_MODE = False
 
 # =============================== DO NOT EDIT ================================
 _NEGATIVE_FOLDER = Path(__file__).parent.resolve()
