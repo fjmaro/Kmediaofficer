@@ -20,7 +20,7 @@ _DEBUG_MODE = True
 _NEGATIVE_FOLDER = Path(__file__).parent.resolve()
 _POSITIVE_FOLDER = _NEGATIVE_FOLDER.parent
 _RESULTS_PATH = _NEGATIVE_FOLDER.joinpath("MediaOfficer")
-_CONTROLLER_DTB = _RESULTS_PATH.joinpath("fcontroller.dat")
+_CONTROLLER_DTB = _RESULTS_PATH.joinpath("fcontroller")
 if not _RESULTS_PATH.exists():
     os.mkdir(_RESULTS_PATH)
 _LOGGER_NAME = "MediaOfficer"
