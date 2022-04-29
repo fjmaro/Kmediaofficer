@@ -21,7 +21,8 @@
 ┃                     [PropRenamed] File with PROPDIN renamed to KDIN.                                               ┃
 ┃                     [DateUpdated] File Modify Date updated to match its KDIN/TRKDIN.                               ┃
 ┃                                                                                                                    ┃
-┃ - Files Controller: [FileDeleted] File deleted found ince last execution.                                          ┃
+┃ - Files Controller: [FileAdded] New file added since last execution.                                               ┃
+┃                     [FileDeleted] File deleted found since last execution.                                         ┃
 ┃                     [ProbablyFound] Found new files added with MD5 values matching the deleted file.               ┃
 ┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫
 ┃ - KDIN: Kjmaro Date-In-Name Convention [YYYYmmdd-HHMMSS*]                                                          ┃
