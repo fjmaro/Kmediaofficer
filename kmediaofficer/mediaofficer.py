@@ -13,6 +13,9 @@ class MediaOfficer:
     --------------------------------------------------------------------------
     Media Officer
     --------------------------------------------------------------------------
+    Photography, video and multimedia program for the management and control
+    of large amount of files
+    --------------------------------------------------------------------------
     """
     # pylint: disable=too-many-instance-attributes,too-many-arguments
     YEAR_BOUNDS = 1800, 2300
@@ -43,6 +46,13 @@ class MediaOfficer:
         self.results_path = results_path
         self.raw_extensions = raw_extensions
 
+    @property
+    def patterns_with_negatives(self) -> tuple[str, ...]:
+        """get the patterns for positives and negatives folder"""
+        patterns = tuple(self.patterns, )
+        neg_patterns = [str(Path(self.neg_path.name) / x) for x in patterns]
+        return patterns + tuple(neg_patterns)
+
     def init_raw_arranger(self) -> None:
         """Initializing the RawArranger"""
         self._rawa = RawArranger(self.pos_path, self.neg_path, self.log,
@@ -50,13 +60,14 @@ class MediaOfficer:
 
     def init_file_maintainer(self) -> None:
         """Initializing the FileMaintainer"""
-        self._mant = FileMaintainer(self.pos_path, self.log, self.patterns,
+        self._mant = FileMaintainer(self.pos_path, self.log,
+                                    self.patterns_with_negatives,
                                     self.YEAR_BOUNDS)
 
     def init_file_controller(self, database_file: Path) -> None:
         """Initializing the FileMaintainer"""
         self._ctrl = FileController(self.pos_path, database_file, self.log,
-                                    self.patterns)
+                                    self.patterns_with_negatives)
 
     def run(self, embedded=False, ctrl_autoupdate_dtb=False) -> bool:
         """
