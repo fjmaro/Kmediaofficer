@@ -24,10 +24,10 @@ PACKAGE_DATA: dict[str, list[str]] = {__title__: ["cmd/*.txt"]}
 # Python and package requirements
 PYTHON_REQUIRES = ">=3.9, <4"
 INSTALL_REQUIRES: list[str] = [
-    'kfilecontroller',
-    'krawarranger',
-    'kmaintainer',
-    'kjmarotools']
+    'kfilecontroller @ git+https://github.com/fjmaro/Kfilecontroller@main',
+    'krawarranger @ git+https://github.com/fjmaro/Krawarranger@main',
+    'kmaintainer @ git+https://github.com/fjmaro/Kmaintainer@main',
+    'kjmarotools @ git+https://github.com/fjmaro/Kjmarotools@main']
 
 # PyPI classifiers with '__license__' included (https://pypi.org/classifiers/)
 CLASSIFIERS = [__license__,
